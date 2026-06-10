@@ -1,6 +1,9 @@
-resource "aws_dynamodb_table_item" "account_request" {
-  table_name = "aft-request"
-  hash_key   = "id"
+# Copyright Amazon.com, Inc. or its affiliates. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+#
+resource "aws_dynamodb_table_item" "account-request" {
+  table_name = var.account-request-table
+  hash_key   = var.account-request-table-hash
 
   item = jsonencode({
     id = { S = lookup(var.control_tower_parameters, "AccountEmail") }
@@ -14,8 +17,8 @@ resource "aws_dynamodb_table_item" "account_request" {
       }
     }
     change_management_parameters = { M = {
-      change_reason       = { S = lookup(var.change_management_parameters, "change_reason", "") }
-      change_requested_by = { S = lookup(var.change_management_parameters, "change_requested_by", "") }
+      change_reason       = { S = lookup(var.change_management_parameters, "change_reason") }
+      change_requested_by = { S = lookup(var.change_management_parameters, "change_requested_by") }
       }
     }
     account_tags                = { S = jsonencode(var.account_tags) }
