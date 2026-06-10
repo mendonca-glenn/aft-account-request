@@ -2,7 +2,7 @@ module "test_workload_account" {
   source = "./modules/aft-account-request"
 
   control_tower_parameters = {
-    AccountEmail              = "aws-test-workload+673588459829@gmail.com"
+    AccountEmail              = "glennmen+test-workload@amazon.com"
     AccountName               = "brightstar-test-workload"
     ManagedOrganizationalUnit = "Workloads NonProd"
     SSOUserEmail              = "glennmen@amazon.com"
